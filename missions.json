@@ -1,0 +1,9 @@
+[
+  {
+    "id": "cs101",
+    "missionName": "Cybersecurity Fundamentals",
+    "price": 3000,
+    "durationWeeks": 8,
+    "level": "Beginner"
+  }
+]
