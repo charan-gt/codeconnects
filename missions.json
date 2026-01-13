@@ -5,5 +5,12 @@
     "price": 3000,
     "durationWeeks": 8,
     "level": "Beginner"
+  },
+  {
+    "id": "wd201",
+    "missionName": "Web Development Basics",
+    "price": 2500,
+    "durationWeeks": 6,
+    "level": "Beginner"
   }
 ]
