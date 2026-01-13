@@ -3,8 +3,9 @@
     "userId": "u001",
     "name": "Explorer One",
     "currentMission": "cs101",
-    "orbitLevel": 1,
-    "completedProjects": 1,
-    "missionStatus": "in-progress"
+    "completedMissions": ["cs101"],
+    "orbitLevel": 2,
+    "completedProjects": 4,
+    "missionStatus": "completed"
   }
 ]
