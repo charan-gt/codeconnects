@@ -1,16 +1,27 @@
 [
   {
     "id": "cs101",
-    "missionName": "Cybersecurity Fundamentals",
+    "missionName": "Cybersecurity: Breach the Unknown",
     "price": 3000,
     "durationWeeks": 8,
-    "level": "Beginner"
+    "level": "Beginner",
+    "theme": "Deep Space",
+    "missionType": "Defense",
+    "outcome": "Protect systems from real-world attacks",
+    "projects": 4,
+    "status": "open"
   },
   {
     "id": "wd201",
-    "missionName": "Web Development Basics",
+    "missionName": "Web Development: Build the Web",
     "price": 2500,
     "durationWeeks": 6,
-    "level": "Beginner"
+    "level": "Beginner",
+    "theme": "Orbit",
+    "missionType": "Construction",
+    "outcome": "Build real websites from scratch",
+    "projects": 3,
+    "status": "open"
   }
-] 
+]
+
