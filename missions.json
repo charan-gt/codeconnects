@@ -22,6 +22,69 @@
     "outcome": "Build real websites from scratch",
     "projects": 3,
     "status": "open"
-  }
-] 
+  },
+  {
+  "id": "cc301",
+  "missionName": "Cloud Computing: Deploy the Future",
+  "price": 4000,
+  "durationWeeks": 7,
+  "level": "Intermediate",
+  "theme": "Nebula",
+  "missionType": "Infrastructure",
+  "outcome": "Deploy, manage, and scale applications on cloud platforms",
+  "projects": 4,
+  "status": "open"
+},
+  {
+  "id": "dp401",
+  "missionName": "DevOps: Automate Everything",
+  "price": 4500,
+  "durationWeeks": 8,
+  "level": "Intermediate",
+  "theme": "Orbit",
+  "missionType": "Automation",
+  "outcome": "Implement CI/CD pipelines and automate deployments",
+  "projects": 5,
+  "status": "open"
+},
+{
+  "id": "ai501",
+  "missionName": "AI Tools: Work Smarter",
+  "price": 3500,
+  "durationWeeks": 5,
+  "level": "Beginner",
+  "theme": "Deep Space",
+  "missionType": "Augmentation",
+  "outcome": "Use AI tools to improve productivity and automate tasks",
+  "projects": 3,
+  "status": "open"
+},
+{
+  "id": "fm601",
+  "missionName": "Finance for Tech Professionals",
+  "price": 3000,
+  "durationWeeks": 6,
+  "level": "Beginner",
+  "theme": "Galaxy",
+  "missionType": "Strategy",
+  "outcome": "Understand personal finance, investing, and financial planning",
+  "projects": 2,
+  "status": "open"
+},
+{
+  "id": "dm701",
+  "missionName": "Digital Marketing: Growth Systems",
+  "price": 2800,
+  "durationWeeks": 6,
+  "level": "Beginner",
+  "theme": "Launchpad",
+  "missionType": "Growth",
+  "outcome": "Run campaigns using SEO, ads, content, and analytics",
+  "projects": 3,
+  "status": "open"
+}
+]  
+  
+  
+
 
