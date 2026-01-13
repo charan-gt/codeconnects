@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CodeConnects</title>
+  <style>
+    body {
+      background-color: #050B1E;
+      color: #EAF0FF;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .card.selected {
+      border-color: #00E5FF;
+      box-shadow: 0 0 20px rgba(0,229,255,0.4);
+    }
+    .price {
+      color: #00E5FF;
+      font-weight: bold;
+    }
+    .card:hover {
+    border-color: #00E5FF;
+    box-shadow: 0 0 15px rgba(0,229,255,0.3);
+    cursor: pointer;
+}
+
+#plans .card {
+  min-width: 220px;
+  flex: 1;
+}
+
+#plans button {
+  background: transparent;
+  color: #00E5FF;
+  border: 1px solid #00E5FF;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#plans button:hover {
+  background: #00E5FF;
+  color: #050B1E;
+}
+
+</style>
+</head>
+<body>
+
+ <h1>🚀 CodeConnects – Missions</h1>
+<select id="levelFilter" onchange="applyFilter()">
+  <option value="">All Levels</option>
+  <option value="Beginner">Beginner</option>
+  <option value="Intermediate">Intermediate</option>
+</select>
+
+<select id="themeFilter" onchange="applyFilter()">
+  <option value="">All Themes</option>
+  <option value="Orbit">Orbit</option>
+  <option value="Deep Space">Deep Space</option>
+  <option value="Nebula">Nebula</option>
+</select>
+<h2>🪐 Choose Your Orbit</h2>
+
+<div id="plans" style="display:flex; gap:15px; flex-wrap:wrap;">
+
+  <div class="card">
+    <h3>🟢 Orbit</h3>
+    <p class="price">₹1,500</p>
+    <p>⏱ 1 Month</p>
+    <p>🔐 1 Login</p>
+    <p>🛠 1 Real-Time Project</p>
+    <p>🎓 Regular Certificate</p>
+     <button onclick="selectPlan('Orbit')">Select Orbit</button>
+  </div>
+
+  <div class="card">
+    <h3>🔵 Deep Space</h3>
+    <p class="price">₹2,700</p>
+    <p>⏱ 2 Months</p>
+    <p>🔐 3 Logins</p>
+    <p>🛠 3 Real-Time Projects</p>
+    <p>🎓 Completion Certificate</p>
+    <button onclick="selectPlan('Deep Space')">Select Deep Space</button>
+  </div>
+
+  <div class="card">
+    <h3>🟣 Nebula</h3>
+    <p class="price">₹4,000</p>
+    <p>⏱ 3 Months</p>
+    <p>🔐 5 Logins</p>
+    <p>🛠 4-5 Projects</p>
+    <p>🎓 AICTE APPROVED CERTIFICATE</p>
+    <p>📘 Study Materials</p>
+    <p>🧠 Weekend Doubt Sessions</p>
+    <button onclick="selectPlan('Nebula')">Select Nebula</button>
+  </div>
+
+</div>
+
+<div id="missions">Loading missions...</div>
+
+<div id="details" class="card" style="display:none;">
+  <h2 id="d-name"></h2>
+  <p id="d-outcome"></p>
+  <p><strong>Theme:</strong> <span id="d-theme"></span></p>
+  <p><strong>Type:</strong> <span id="d-type"></span></p>
+  <p><strong>Duration:</strong> <span id="d-duration"></span> weeks</p>
+  <p><strong>Projects:</strong></p>
+  <ul id="d-projects"></ul>
+  <p class="price">₹<span id="d-price"></span></p>
+</div>
+<div class="card">
+  <h3>👨‍🚀 Explorer One</h3>
+  <p>Orbit Level: <strong>2</strong></p>
+  <p>Status: Mission Completed</p>
+</div>
+
+<script>
+let allMissions = [];
+
+// 1️⃣ Fetch data
+fetch("https://raw.githubusercontent.com/charan-gt/codeconnects/main/missions.json")
+  .then(res => res.json())
+  .then(data => {
+    allMissions = data;
+    renderMissions(data);
+  })
+  .catch(() => {
+    document.getElementById("missions").innerText = "Error loading data";
+  });
+
+// 2️⃣ Render missions
+function renderMissions(list) {
+  const box = document.getElementById("missions");
+  box.innerHTML = "";
+  list.forEach(m => {
+    box.innerHTML += `
+      <div class="card" onclick='selectMission(event, ${JSON.stringify(m)})'>
+        <h3>${m.missionName}</h3>
+        <p>${m.outcome || ""}</p>
+        <p class="price">₹${m.price}</p>
+        <p>Duration: ${m.durationWeeks} weeks</p>
+        <p>Level: ${m.level}</p>
+      </div>
+    `;
+  });
+}
+
+// 3️⃣ Filter logic
+function applyFilter() {
+  const level = document.getElementById("levelFilter").value;
+  const theme = document.getElementById("themeFilter").value;
+
+  const filtered = allMissions.filter(m => {
+    return (!level || m.level === level) &&
+           (!theme || m.theme === theme);
+  });
+
+  renderMissions(filtered);
+}
+
+// 4️⃣ Mission details + selection
+function selectMission(event, m) {
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+  event.currentTarget.classList.add("selected");
+
+  document.getElementById("details").style.display = "block";
+  document.getElementById("d-name").innerText = m.missionName;
+  document.getElementById("d-outcome").innerText = m.outcome;
+  document.getElementById("d-theme").innerText = m.theme;
+  document.getElementById("d-type").innerText = m.missionType;
+  document.getElementById("d-duration").innerText = m.durationWeeks;
+
+  const projectList = document.getElementById("d-projects");
+  projectList.innerHTML = "";
+if (Array.isArray(m.projects)) {
+  m.projects.forEach(p => {
+    projectList.innerHTML += `<li>${p}</li>`;
+  });
+} else {
+  projectList.innerHTML += `<li>${m.projects} real-world project(s)</li>`;
+}
+  document.getElementById("d-price").innerText = m.price;
+}
+function selectPlan(plan) {
+  alert("🪐 You selected the " + plan + " plan");
+}
+</script>
+</body>
+</html>
