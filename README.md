@@ -13,3 +13,9 @@ CodeConnects is a space-themed learning platform.
 
 ## Status
 Early prototype (API design stage)
+
+## What this project demonstrates
+- API design thinking
+- User-to-course linking
+- Progress tracking logic
+- Level-based learning flow
